@@ -45,9 +45,12 @@
 <div id="info">
   <div id="mynetwork"></div>
 
-  <div>
-    <p id="nodeid"></p>
-    <p id="comment"></p>
+  <div id="Person">
+    <p>id:</p><p id="nodeid"></p>
+    <p>familyName:</p><p id="familyName"></p>
+    <p>givenName:</p><p id="givenName"></p>
+    <p>honorificPrefix:</p><p id="honorificPrefix"></p>
+
   </div>
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>　
@@ -103,21 +106,27 @@
                 if (nodes[i].type==='Person'){
                   nodes[i].shape = "circle";
                   nodes[i].color = "rgb(255,218,185)";
+                  nodes[i].margin = 10;
                 }else if (nodes[i].type==='Organization'){
                   nodes[i].shape = "circle";
                   nodes[i].color = "rgb(141,238,238)";
+                  nodes[i].margin = 10;
                 }else if (nodes[i].type==='Officership'){
                   nodes[i].shape = "circle";
                   nodes[i].color = "rgb(84,255,159)";
+                  nodes[i].margin = 10;
                 }else if (nodes[i].type==='BusinessSector'){
                   nodes[i].shape = "circle";
                   nodes[i].color = "rgb(255,246,143)";
+                  nodes[i].margin = 10;
                 }else if (nodes[i].type==='EconomicSector'){
                   nodes[i].shape = "circle";
                   nodes[i].color = "rgb(238,130,238)";
+                  nodes[i].margin = 10;
                 }else if (nodes[i].type==='IndustryGroup'){
                   nodes[i].shape = "circle";
                   nodes[i].color = "rgb(169,169,169)";
+                  nodes[i].margin = 10;
                 }
               }
               for(i=0;i<edges.length;i++)
@@ -142,21 +151,27 @@
                   if (nodes[i].type==='Person'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(255,218,185)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='Organization'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(141,238,238)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='Officership'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(84,255,159)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='BusinessSector'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(255,246,143)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='EconomicSector'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(238,130,238)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='IndustryGroup'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(169,169,169)";
+                    nodes[i].margin = 10;
                   }
                 }
                 for(i=0;i<edges.length;i++)
@@ -177,21 +192,27 @@
                   if (nodes[i].type==='Person'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(255,218,185)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='Organization'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(141,238,238)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='Officership'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(84,255,159)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='BusinessSector'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(255,246,143)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='EconomicSector'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(238,130,238)";
+                    nodes[i].margin = 10;
                   }else if (nodes[i].type==='IndustryGroup'){
                     nodes[i].shape = "circle";
                     nodes[i].color = "rgb(169,169,169)";
+                    nodes[i].margin = 10;
                   }
                 }
                 for(i=0;i<edges.length;i++)
@@ -226,21 +247,27 @@
                     if (nodes[i].type==='Person'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(255,218,185)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='Organization'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(141,238,238)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='Officership'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(84,255,159)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='BusinessSector'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(255,246,143)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='EconomicSector'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(238,130,238)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='IndustryGroup'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(169,169,169)";
+                      nodes[i].margin = 10;
                     }
                   }
                   for(i=0;i<edges.length;i++)
@@ -261,21 +288,27 @@
                     if (nodes[i].type==='Person'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(255,218,185)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='Organization'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(141,238,238)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='Officership'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(84,255,159)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='BusinessSector'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(255,246,143)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='EconomicSector'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(238,130,238)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='IndustryGroup'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(169,169,169)";
+                      nodes[i].margin = 10;
                     }
                   }
                   for(i=0;i<edges.length;i++)
@@ -298,21 +331,27 @@
                     if (nodes[i].type==='Person'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(255,218,185)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='Organization'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(141,238,238)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='Officership'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(84,255,159)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='BusinessSector'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(255,246,143)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='EconomicSector'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(238,130,238)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='IndustryGroup'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(169,169,169)";
+                      nodes[i].margin = 10;
                     }
                   }
                   for(i=0;i<edges.length;i++)
@@ -333,21 +372,27 @@
                     if (nodes[i].type==='Person'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(255,218,185)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='Organization'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(141,238,238)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='Officership'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(84,255,159)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='BusinessSector'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(255,246,143)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='EconomicSector'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(238,130,238)";
+                      nodes[i].margin = 10;
                     }else if (nodes[i].type==='IndustryGroup'){
                       nodes[i].shape = "circle";
                       nodes[i].color = "rgb(169,169,169)";
+                      nodes[i].margin = 10;
                     }
                   }
                   for(i=0;i<edges.length;i++)
@@ -364,12 +409,13 @@
 
   network.on("click", function(params) {
     console.log(params);
-    console.log(params.edges);
     console.log(params.nodes[0]);
     document.getElementById("nodeid").innerText = params.nodes[0];
     for (var i=0;i<nodes.length;i++){
       if (nodes[i].id===params.nodes[0]){
-        document.getElementById("comment").innerText = nodes[i].label;
+        document.getElementById("familyName").innerText = nodes[i].familyName;
+        document.getElementById("givenName").innerText = nodes[i].givenName;
+        document.getElementById("honorificPrefix").innerText = nodes[i].honorificPrefix;
         break;
       }
     }
@@ -407,21 +453,27 @@
                       if (nodes[i].type==='Person'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,218,185)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Organization'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(141,238,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Officership'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(84,255,159)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='BusinessSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,246,143)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='EconomicSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(238,130,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='IndustryGroup'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(169,169,169)";
+                        nodes[i].margin = 10;
                       }
                     }
                     for(i=0;i<edges.length;i++)
@@ -458,21 +510,27 @@
                       if (nodes[i].type==='Person'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,218,185)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Organization'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(141,238,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Officership'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(84,255,159)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='BusinessSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,246,143)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='EconomicSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(238,130,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='IndustryGroup'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(169,169,169)";
+                        nodes[i].margin = 10;
                       }
                     }
                     for(i=0;i<edges.length;i++)
@@ -509,21 +567,27 @@
                       if (nodes[i].type==='Person'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,218,185)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Organization'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(141,238,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Officership'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(84,255,159)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='BusinessSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,246,143)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='EconomicSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(238,130,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='IndustryGroup'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(169,169,169)";
+                        nodes[i].margin = 10;
                       }
                     }
                     for(i=0;i<edges.length;i++)
@@ -560,21 +624,27 @@
                       if (nodes[i].type==='Person'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,218,185)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Organization'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(141,238,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Officership'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(84,255,159)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='BusinessSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,246,143)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='EconomicSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(238,130,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='IndustryGroup'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(169,169,169)";
+                        nodes[i].margin = 10;
                       }
                     }
                     for(i=0;i<edges.length;i++)
@@ -611,21 +681,27 @@
                       if (nodes[i].type==='Person'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,218,185)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Organization'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(141,238,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='Officership'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(84,255,159)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='BusinessSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(255,246,143)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='EconomicSector'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(238,130,238)";
+                        nodes[i].margin = 10;
                       }else if (nodes[i].type==='IndustryGroup'){
                         nodes[i].shape = "circle";
                         nodes[i].color = "rgb(169,169,169)";
+                        nodes[i].margin = 10;
                       }
                     }
                     for(i=0;i<edges.length;i++)

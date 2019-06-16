@@ -16,8 +16,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webpack-jquery/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="10890">
-              <caret line="588" column="57" selection-start-line="588" selection-start-column="57" selection-end-line="588" selection-end-column="57" />
+            <state relative-caret-position="198">
+              <caret line="417" column="87" selection-start-line="417" selection-start-column="87" selection-end-line="417" selection-end-column="87" />
+              <folding>
+                <element signature="e#3218#3283#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -40,9 +43,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="440" />
-    <option name="width" value="919" />
-    <option name="height" value="728" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="656" />
+    <option name="height" value="456" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -104,12 +108,12 @@
       <option name="presentableId" value="Default" />
       <updated>1560675098573</updated>
       <workItem from="1560675103710" duration="1288000" />
-      <workItem from="1560676469823" duration="16765000" />
+      <workItem from="1560676469823" duration="18503000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="18053000" />
+    <option name="totallyTimeSpent" value="19791000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -174,8 +178,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webpack-jquery/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="10890">
-          <caret line="588" column="57" selection-start-line="588" selection-start-column="57" selection-end-line="588" selection-end-column="57" />
+        <state relative-caret-position="198">
+          <caret line="417" column="87" selection-start-line="417" selection-start-column="87" selection-end-line="417" selection-end-column="87" />
+          <folding>
+            <element signature="e#3218#3283#0" />
+          </folding>
         </state>
       </provider>
     </entry>
