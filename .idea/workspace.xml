@@ -16,8 +16,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/webpack-jquery/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-516">
-              <caret line="349" column="43" selection-start-line="349" selection-start-column="43" selection-end-line="349" selection-end-column="43" />
+            <state relative-caret-position="10890">
+              <caret line="588" column="57" selection-start-line="588" selection-start-column="57" selection-end-line="588" selection-end-column="57" />
             </state>
           </provider>
         </entry>
@@ -104,12 +104,12 @@
       <option name="presentableId" value="Default" />
       <updated>1560675098573</updated>
       <workItem from="1560675103710" duration="1288000" />
-      <workItem from="1560676469823" duration="13517000" />
+      <workItem from="1560676469823" duration="16765000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="14805000" />
+    <option name="totallyTimeSpent" value="18053000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -174,8 +174,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/webpack-jquery/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-516">
-          <caret line="349" column="43" selection-start-line="349" selection-start-column="43" selection-end-line="349" selection-end-column="43" />
+        <state relative-caret-position="10890">
+          <caret line="588" column="57" selection-start-line="588" selection-start-column="57" selection-end-line="588" selection-end-column="57" />
         </state>
       </provider>
     </entry>

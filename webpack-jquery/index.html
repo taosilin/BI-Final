@@ -377,7 +377,269 @@
 
   network.on("doubleClick", function(params) {
     console.log(params);
-    //axios
+    var id;
+    for (var i=0;i<nodes.length;i++){
+      if (nodes[i].id===params.nodes[0]){
+        id = nodes[i].id;
+        if (nodes[i].type==='Person'){
+          axios.get('http://127.0.0.1:5000/person/'+String(id))
+                  .then(function(response){
+                    console.log(response);
+                    var notexist = true;
+                    for (var k=0;k<response.data.nodes.length;k++){
+                      notexist = true;
+                      for (var j=0;j<nodes.length;j++){
+                        if (nodes[j].id===response.data.nodes[k].id){
+                          notexist = false;
+                          break;
+                        }
+                      }
+                      if (notexist) nodes.push(response.data.nodes[k]);
+                    }
+                    for (k=0;k<response.data.relationships.length;k++){
+                      if (edges.indexOf(response.data.relationships[k])<0){
+                        edges.push(response.data.relationships[k]);
+                      }
+                    }
+                    // nodes = nodes.concat(response.data.nodes);
+                    // edges = edges.concat(response.data.relationships);
+                    for (var i=0;i<nodes.length;i++){
+                      if (nodes[i].type==='Person'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,218,185)";
+                      }else if (nodes[i].type==='Organization'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(141,238,238)";
+                      }else if (nodes[i].type==='Officership'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(84,255,159)";
+                      }else if (nodes[i].type==='BusinessSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,246,143)";
+                      }else if (nodes[i].type==='EconomicSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(238,130,238)";
+                      }else if (nodes[i].type==='IndustryGroup'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(169,169,169)";
+                      }
+                    }
+                    for(i=0;i<edges.length;i++)
+                    {
+                      edges[i].label=edges[i].type;
+                    }
+                    network.setData({nodes:nodes,edges:edges});
+                  }).catch(function (error) {
+            console.log(error);
+          });
+        }else if (nodes[i].type==='Organization'){
+          axios.get('http://127.0.0.1:5000/organization/'+String(id))
+                  .then(function(response){
+                    console.log(response);
+                    var notexist = true;
+                    for (var k=0;k<response.data.nodes.length;k++){
+                      notexist = true;
+                      for (var j=0;j<nodes.length;j++){
+                        if (nodes[j].id===response.data.nodes[k].id){
+                          notexist = false;
+                          break;
+                        }
+                      }
+                      if (notexist) nodes.push(response.data.nodes[k]);
+                    }
+                    for (k=0;k<response.data.relationships.length;k++){
+                      if (edges.indexOf(response.data.relationships[k])<0){
+                        edges.push(response.data.relationships[k]);
+                      }
+                    }
+                    // nodes = nodes.concat(response.data.nodes);
+                    // edges = edges.concat(response.data.relationships);
+                    for (var i=0;i<nodes.length;i++){
+                      if (nodes[i].type==='Person'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,218,185)";
+                      }else if (nodes[i].type==='Organization'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(141,238,238)";
+                      }else if (nodes[i].type==='Officership'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(84,255,159)";
+                      }else if (nodes[i].type==='BusinessSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,246,143)";
+                      }else if (nodes[i].type==='EconomicSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(238,130,238)";
+                      }else if (nodes[i].type==='IndustryGroup'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(169,169,169)";
+                      }
+                    }
+                    for(i=0;i<edges.length;i++)
+                    {
+                      edges[i].label=edges[i].type;
+                    }
+                    network.setData({nodes:nodes,edges:edges});
+                  }).catch(function (error) {
+            console.log(error);
+          });
+        }else if (nodes[i].type==='IndustryGroup'){
+          axios.get('http://127.0.0.1:5000/industryGroup/'+String(id))
+                  .then(function(response){
+                    console.log(response);
+                    var notexist = true;
+                    for (var k=0;k<response.data.nodes.length;k++){
+                      notexist = true;
+                      for (var j=0;j<nodes.length;j++){
+                        if (nodes[j].id===response.data.nodes[k].id){
+                          notexist = false;
+                          break;
+                        }
+                      }
+                      if (notexist) nodes.push(response.data.nodes[k]);
+                    }
+                    for (k=0;k<response.data.relationships.length;k++){
+                      if (edges.indexOf(response.data.relationships[k])<0){
+                        edges.push(response.data.relationships[k]);
+                      }
+                    }
+                    // nodes = nodes.concat(response.data.nodes);
+                    // edges = edges.concat(response.data.relationships);
+                    for (var i=0;i<nodes.length;i++){
+                      if (nodes[i].type==='Person'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,218,185)";
+                      }else if (nodes[i].type==='Organization'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(141,238,238)";
+                      }else if (nodes[i].type==='Officership'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(84,255,159)";
+                      }else if (nodes[i].type==='BusinessSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,246,143)";
+                      }else if (nodes[i].type==='EconomicSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(238,130,238)";
+                      }else if (nodes[i].type==='IndustryGroup'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(169,169,169)";
+                      }
+                    }
+                    for(i=0;i<edges.length;i++)
+                    {
+                      edges[i].label=edges[i].type;
+                    }
+                    network.setData({nodes:nodes,edges:edges});
+                  }).catch(function (error) {
+            console.log(error);
+          });
+        }else if (nodes[i].type==='BusinessSector'){
+          axios.get('http://127.0.0.1:5000/businessSector/'+String(id))
+                  .then(function(response){
+                    console.log(response);
+                    var notexist = true;
+                    for (var k=0;k<response.data.nodes.length;k++){
+                      notexist = true;
+                      for (var j=0;j<nodes.length;j++){
+                        if (nodes[j].id===response.data.nodes[k].id){
+                          notexist = false;
+                          break;
+                        }
+                      }
+                      if (notexist) nodes.push(response.data.nodes[k]);
+                    }
+                    for (k=0;k<response.data.relationships.length;k++){
+                      if (edges.indexOf(response.data.relationships[k])<0){
+                        edges.push(response.data.relationships[k]);
+                      }
+                    }
+                    // nodes = nodes.concat(response.data.nodes);
+                    // edges = edges.concat(response.data.relationships);
+                    for (var i=0;i<nodes.length;i++){
+                      if (nodes[i].type==='Person'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,218,185)";
+                      }else if (nodes[i].type==='Organization'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(141,238,238)";
+                      }else if (nodes[i].type==='Officership'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(84,255,159)";
+                      }else if (nodes[i].type==='BusinessSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,246,143)";
+                      }else if (nodes[i].type==='EconomicSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(238,130,238)";
+                      }else if (nodes[i].type==='IndustryGroup'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(169,169,169)";
+                      }
+                    }
+                    for(i=0;i<edges.length;i++)
+                    {
+                      edges[i].label=edges[i].type;
+                    }
+                    network.setData({nodes:nodes,edges:edges});
+                  }).catch(function (error) {
+            console.log(error);
+          });
+        }else if (nodes[i].type==='EconomicSector'){
+          axios.get('http://127.0.0.1:5000/economicSector/'+String(id))
+                  .then(function(response){
+                    console.log(response);
+                    var notexist = true;
+                    for (var k=0;k<response.data.nodes.length;k++){
+                      notexist = true;
+                      for (var j=0;j<nodes.length;j++){
+                        if (nodes[j].id===response.data.nodes[k].id){
+                          notexist = false;
+                          break;
+                        }
+                      }
+                      if (notexist) nodes.push(response.data.nodes[k]);
+                    }
+                    for (k=0;k<response.data.relationships.length;k++){
+                      if (edges.indexOf(response.data.relationships[k])<0){
+                        edges.push(response.data.relationships[k]);
+                      }
+                    }
+                    // nodes = nodes.concat(response.data.nodes);
+                    // edges = edges.concat(response.data.relationships);
+                    for (var i=0;i<nodes.length;i++){
+                      if (nodes[i].type==='Person'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,218,185)";
+                      }else if (nodes[i].type==='Organization'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(141,238,238)";
+                      }else if (nodes[i].type==='Officership'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(84,255,159)";
+                      }else if (nodes[i].type==='BusinessSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(255,246,143)";
+                      }else if (nodes[i].type==='EconomicSector'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(238,130,238)";
+                      }else if (nodes[i].type==='IndustryGroup'){
+                        nodes[i].shape = "circle";
+                        nodes[i].color = "rgb(169,169,169)";
+                      }
+                    }
+                    for(i=0;i<edges.length;i++)
+                    {
+                      edges[i].label=edges[i].type;
+                    }
+                    network.setData({nodes:nodes,edges:edges});
+                  }).catch(function (error) {
+            console.log(error);
+          });
+        }
+        break;
+      }
+    }
   });
 </script>
 
