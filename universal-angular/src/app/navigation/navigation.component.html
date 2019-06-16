@@ -1,0 +1,31 @@
+<h2>Navigation</h2>
+
+<h3>Toolbar</h3>
+<dx-toolbar [items]="toolbarItems"></dx-toolbar>
+
+<h3>Menu</h3>
+<dx-menu
+  [dataSource]="products"
+  displayExpr="name"
+  orientation="horizontal"
+  submenuDirection="auto"
+>
+</dx-menu>
+
+<h3>Tabs</h3>
+<dx-tabs
+  [dataSource]="tabs"
+  [width]="300"
+  [scrollByContent]="true"
+  [showNavButtons]="true"
+></dx-tabs>
+
+<h3>TreeView</h3>
+<dx-tree-view
+  [dataSource]="products"
+  [height]="500"
+  showCheckBoxesMode="selectAll"
+  [expandNodesRecursive]="true"
+  keyExpr="id"
+  displayExpr="name"
+></dx-tree-view>
