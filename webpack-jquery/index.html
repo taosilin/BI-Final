@@ -10,17 +10,16 @@
   <link rel="stylesheet" type="text/css" href="node_modules/devextreme/dist/css/dx.light.css" />
   <style type="text/css">
     #mynetwork {
-      width: 1200px;
-      height: 600px;
+      width: 800px;
+      height: 500px;
       border: 1px solid lightgray;
+    }
+    #info{
+      display: flex;
     }
   </style>
 </head>
 <body>
-
-<p>A word in a label that's wider than the maximum width will be forced onto a line. We can't do better without breaking the word into pieces, and even then the pieces could still be too wide.</p>
-
-<p>Avoid the problem. Don't set ridiculously small maximum widths.</p>
 
 <div id="search">
 
@@ -42,33 +41,24 @@
   </select>
   <input id="Entity2" name="Entity2" value="">
   <button type="button" onclick="search2(document.getElementById('Entity1').value,document.getElementById('Entity2').value)">Search</button>
-
 </div>
-
-<div id="mynetwork"></div>
-
 <div id="info">
-  <p id="nodeid"></p>
-  <p id="comment"></p>
-</div>
+  <div id="mynetwork"></div>
 
+  <div>
+    <p id="nodeid"></p>
+    <p id="comment"></p>
+  </div>
+</div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>　
 <script type="text/javascript">
 
   var nodes = new vis.DataSet([
-    { id: 1, label: 'Node 1', widthConstraint : { maximum : 30 } },
-    { id: 2, label: 'Node 2', widthConstraint : { maximum : 30 } },
-    { id: 4, label: 'Node 4'},
-    { id: 5, label: 'Node 5'},
-    { id: 6, label: 'Node 6', cid:1},
-    { id: 7, label: 'Node 7', cid:1}
+
   ]);
 
   var edges = [
-    {from:1,to:2,label:'relationship'},
-    {from:2,to:3},
-    {from:2,to:4},
-    {from:2,to:7}
+
   ];
 
   var container = document.getElementById('mynetwork');
@@ -103,8 +93,41 @@
 
   window.onload=function () {
     console.log("load");
-    //初始化
-    // axios.post()
+    //初始化 /initGraph
+    axios.get('http://127.0.0.1:5000/initGraph')
+            .then(function(response){
+              console.log(response);
+              nodes = response.data.nodes;
+              edges = response.data.relationships;
+              for (var i=0;i<nodes.length;i++){
+                if (nodes[i].type==='Person'){
+                  nodes[i].shape = "circle";
+                  nodes[i].color = "rgb(255,218,185)";
+                }else if (nodes[i].type==='Organization'){
+                  nodes[i].shape = "circle";
+                  nodes[i].color = "rgb(141,238,238)";
+                }else if (nodes[i].type==='Officership'){
+                  nodes[i].shape = "circle";
+                  nodes[i].color = "rgb(84,255,159)";
+                }else if (nodes[i].type==='BusinessSector'){
+                  nodes[i].shape = "circle";
+                  nodes[i].color = "rgb(255,246,143)";
+                }else if (nodes[i].type==='EconomicSector'){
+                  nodes[i].shape = "circle";
+                  nodes[i].color = "rgb(238,130,238)";
+                }else if (nodes[i].type==='IndustryGroup'){
+                  nodes[i].shape = "circle";
+                  nodes[i].color = "rgb(169,169,169)";
+                }
+              }
+              for(i=0;i<edges.length;i++)
+              {
+                edges[i].label=edges[i].type;
+              }
+              network.setData({nodes:nodes,edges:edges});
+            }).catch(function (error) {
+      console.log(error);
+    });
   }
 
   function search1(Entity) {
@@ -115,7 +138,28 @@
                 console.log(response);
                 nodes = response.data.nodes;
                 edges = response.data.relationships;
-                for(var i=0;i<edges.length;i++)
+                for (var i=0;i<nodes.length;i++){
+                  if (nodes[i].type==='Person'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(255,218,185)";
+                  }else if (nodes[i].type==='Organization'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(141,238,238)";
+                  }else if (nodes[i].type==='Officership'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(84,255,159)";
+                  }else if (nodes[i].type==='BusinessSector'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(255,246,143)";
+                  }else if (nodes[i].type==='EconomicSector'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(238,130,238)";
+                  }else if (nodes[i].type==='IndustryGroup'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(169,169,169)";
+                  }
+                }
+                for(i=0;i<edges.length;i++)
                 {
                   edges[i].label=edges[i].type;
                 }
@@ -129,7 +173,28 @@
                 console.log(response);
                 nodes = response.data.nodes;
                 edges = response.data.relationships;
-                for(var i=0;i<edges.length;i++)
+                for (var i=0;i<nodes.length;i++){
+                  if (nodes[i].type==='Person'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(255,218,185)";
+                  }else if (nodes[i].type==='Organization'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(141,238,238)";
+                  }else if (nodes[i].type==='Officership'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(84,255,159)";
+                  }else if (nodes[i].type==='BusinessSector'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(255,246,143)";
+                  }else if (nodes[i].type==='EconomicSector'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(238,130,238)";
+                  }else if (nodes[i].type==='IndustryGroup'){
+                    nodes[i].shape = "circle";
+                    nodes[i].color = "rgb(169,169,169)";
+                  }
+                }
+                for(i=0;i<edges.length;i++)
                 {
                   edges[i].label=edges[i].type;
                 }
@@ -157,7 +222,28 @@
                   console.log(response);
                   nodes = response.data.nodes;
                   edges = response.data.relationships;
-                  for(var i=0;i<edges.length;i++)
+                  for (var i=0;i<nodes.length;i++){
+                    if (nodes[i].type==='Person'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(255,218,185)";
+                    }else if (nodes[i].type==='Organization'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(141,238,238)";
+                    }else if (nodes[i].type==='Officership'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(84,255,159)";
+                    }else if (nodes[i].type==='BusinessSector'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(255,246,143)";
+                    }else if (nodes[i].type==='EconomicSector'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(238,130,238)";
+                    }else if (nodes[i].type==='IndustryGroup'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(169,169,169)";
+                    }
+                  }
+                  for(i=0;i<edges.length;i++)
                   {
                     edges[i].label=edges[i].type;
                   }
@@ -166,12 +252,33 @@
           console.log(error);
         });
       } else{
-        axios.get('http://127.0.0.1:5000/organization/'+String(Entity1)+'/organization/'+String(Entity2))
+        axios.get('http://127.0.0.1:5000/person/'+String(Entity1)+'/organization/'+String(Entity2))
                 .then(function(response){
                   console.log(response);
                   nodes = response.data.nodes;
                   edges = response.data.relationships;
-                  for(var i=0;i<edges.length;i++)
+                  for (var i=0;i<nodes.length;i++){
+                    if (nodes[i].type==='Person'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(255,218,185)";
+                    }else if (nodes[i].type==='Organization'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(141,238,238)";
+                    }else if (nodes[i].type==='Officership'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(84,255,159)";
+                    }else if (nodes[i].type==='BusinessSector'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(255,246,143)";
+                    }else if (nodes[i].type==='EconomicSector'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(238,130,238)";
+                    }else if (nodes[i].type==='IndustryGroup'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(169,169,169)";
+                    }
+                  }
+                  for(i=0;i<edges.length;i++)
                   {
                     edges[i].label=edges[i].type;
                   }
@@ -182,12 +289,33 @@
       }
     }else{
       if(type2===0){
-        axios.get('http://127.0.0.1:5000/organization/'+String(Entity1)+'/person/'+String(Entity2))
+        axios.get('http://127.0.0.1:5000/person/'+String(Entity2)+'/organization/'+String(Entity1))
                 .then(function(response){
                   console.log(response);
                   nodes = response.data.nodes;
                   edges = response.data.relationships;
-                  for(var i=0;i<edges.length;i++)
+                  for (var i=0;i<nodes.length;i++){
+                    if (nodes[i].type==='Person'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(255,218,185)";
+                    }else if (nodes[i].type==='Organization'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(141,238,238)";
+                    }else if (nodes[i].type==='Officership'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(84,255,159)";
+                    }else if (nodes[i].type==='BusinessSector'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(255,246,143)";
+                    }else if (nodes[i].type==='EconomicSector'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(238,130,238)";
+                    }else if (nodes[i].type==='IndustryGroup'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(169,169,169)";
+                    }
+                  }
+                  for(i=0;i<edges.length;i++)
                   {
                     edges[i].label=edges[i].type;
                   }
@@ -201,7 +329,28 @@
                   console.log(response);
                   nodes = response.data.nodes;
                   edges = response.data.relationships;
-                  for(var i=0;i<edges.length;i++)
+                  for (var i=0;i<nodes.length;i++){
+                    if (nodes[i].type==='Person'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(255,218,185)";
+                    }else if (nodes[i].type==='Organization'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(141,238,238)";
+                    }else if (nodes[i].type==='Officership'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(84,255,159)";
+                    }else if (nodes[i].type==='BusinessSector'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(255,246,143)";
+                    }else if (nodes[i].type==='EconomicSector'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(238,130,238)";
+                    }else if (nodes[i].type==='IndustryGroup'){
+                      nodes[i].shape = "circle";
+                      nodes[i].color = "rgb(169,169,169)";
+                    }
+                  }
+                  for(i=0;i<edges.length;i++)
                   {
                     edges[i].label=edges[i].type;
                   }
@@ -218,13 +367,16 @@
     console.log(params.edges);
     console.log(params.nodes[0]);
     document.getElementById("nodeid").innerText = params.nodes[0];
-    document.getElementById("comment").innerText = params.nodes[0];
-    //axios
+    for (var i=0;i<nodes.length;i++){
+      if (nodes[i].id===params.nodes[0]){
+        document.getElementById("comment").innerText = nodes[i].label;
+        break;
+      }
+    }
   });
 
   network.on("doubleClick", function(params) {
     console.log(params);
-    console.log("双击");
     //axios
   });
 </script>
