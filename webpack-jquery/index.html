@@ -2,40 +2,59 @@
 <html>
 <head>
   <title>Maximum Width Edge Case Test</title>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="./dist/vis-network.min.js" type="text/javascript"></script>
-  <script src="../../googleAnalytics.js"></script>
+  <script src="googleAnalytics.js"></script>
   <script type="text/javascript" src="dist/bundle.js" charset="utf-8"></script>
   <link href="./dist/vis-network.min.css" rel="stylesheet" type="text/css" />
   <link rel="stylesheet" type="text/css" href="node_modules/devextreme/dist/css/dx.common.css" />
   <link rel="stylesheet" type="text/css" href="node_modules/devextreme/dist/css/dx.light.css" />
   <style type="text/css">
     #mynetwork {
-      width: 600px;
-      height: 400px;
+      width: 1200px;
+      height: 600px;
       border: 1px solid lightgray;
     }
   </style>
-
 </head>
-
 <body>
 
 <p>A word in a label that's wider than the maximum width will be forced onto a line. We can't do better without breaking the word into pieces, and even then the pieces could still be too wide.</p>
 
 <p>Avoid the problem. Don't set ridiculously small maximum widths.</p>
-<div id="search">
-  <input id="Entity" type="text" name="Entity" value=""><button type="button" onclick="search1(document.getElementById('Entity').value)">Search</button>
 
+<div id="search">
+
+  <select id="select">
+    <option value="1">Person</option>
+    <option value="2">Organization</option>
+  </select>
+  <input id="Entity" type="text" name="Entity" value=""><button type="button" onclick="search1(document.getElementById('Entity').value)">Search</button>
+  <br/>
+
+  <select id="select1">
+    <option value="1">Person</option>
+    <option value="2">Organization</option>
+  </select>
   <input id="Entity1" name="Entity1" value="">
+  <select id="select2">
+    <option value="1">Person</option>
+    <option value="2">Organization</option>
+  </select>
   <input id="Entity2" name="Entity2" value="">
   <button type="button" onclick="search2(document.getElementById('Entity1').value,document.getElementById('Entity2').value)">Search</button>
+
 </div>
+
 <div id="mynetwork"></div>
+
 <div id="info">
   <p id="nodeid"></p>
+  <p id="comment"></p>
 </div>
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>　
 <script type="text/javascript">
+
   var nodes = new vis.DataSet([
     { id: 1, label: 'Node 1', widthConstraint : { maximum : 30 } },
     { id: 2, label: 'Node 2', widthConstraint : { maximum : 30 } },
@@ -47,6 +66,8 @@
 
   var edges = [
     {from:1,to:2,label:'relationship'},
+    {from:2,to:3},
+    {from:2,to:4},
     {from:2,to:7}
   ];
 
@@ -87,16 +108,109 @@
   }
 
   function search1(Entity) {
-    console.log(Entity);
-    axios.get('http://localhost:5000/organization/'+String(Entity))
-            .then(function(response){
-              console.log(response);
-            });
+    var type = document.getElementById("select").selectedIndex;
+    if (type===0){
+      axios.get('http://127.0.0.1:5000/person/'+String(Entity))
+              .then(function(response){
+                console.log(response);
+                nodes = response.data.nodes;
+                edges = response.data.relationships;
+                for(var i=0;i<edges.length;i++)
+                {
+                  edges[i].label=edges[i].type;
+                }
+                network.setData({nodes:nodes,edges:edges});
+              }).catch(function (error) {
+        console.log(error);
+      });
+    } else {
+      axios.get('http://127.0.0.1:5000/organization/'+String(Entity))
+              .then(function(response){
+                console.log(response);
+                nodes = response.data.nodes;
+                edges = response.data.relationships;
+                for(var i=0;i<edges.length;i++)
+                {
+                  edges[i].label=edges[i].type;
+                }
+                network.setData({nodes:nodes,edges:edges});
+              }).catch(function (error) {
+        console.log(error);
+      });
+    }
+
+
+
   }
 
   function search2(Entity1,Entity2) {
     console.log(Entity1);
     console.log(Entity2);
+
+    var type1 = document.getElementById("select1").selectedIndex;
+    var type2 = document.getElementById("select2").selectedIndex;
+
+    if (type1===0){
+      if (type2===0){
+        axios.get('http://127.0.0.1:5000/person/'+String(Entity1)+'/person/'+String(Entity2))
+                .then(function(response){
+                  console.log(response);
+                  nodes = response.data.nodes;
+                  edges = response.data.relationships;
+                  for(var i=0;i<edges.length;i++)
+                  {
+                    edges[i].label=edges[i].type;
+                  }
+                  network.setData({nodes:nodes,edges:edges});
+                }).catch(function (error) {
+          console.log(error);
+        });
+      } else{
+        axios.get('http://127.0.0.1:5000/organization/'+String(Entity1)+'/organization/'+String(Entity2))
+                .then(function(response){
+                  console.log(response);
+                  nodes = response.data.nodes;
+                  edges = response.data.relationships;
+                  for(var i=0;i<edges.length;i++)
+                  {
+                    edges[i].label=edges[i].type;
+                  }
+                  network.setData({nodes:nodes,edges:edges});
+                }).catch(function (error) {
+          console.log(error);
+        });
+      }
+    }else{
+      if(type2===0){
+        axios.get('http://127.0.0.1:5000/organization/'+String(Entity1)+'/person/'+String(Entity2))
+                .then(function(response){
+                  console.log(response);
+                  nodes = response.data.nodes;
+                  edges = response.data.relationships;
+                  for(var i=0;i<edges.length;i++)
+                  {
+                    edges[i].label=edges[i].type;
+                  }
+                  network.setData({nodes:nodes,edges:edges});
+                }).catch(function (error) {
+          console.log(error);
+        });
+      }else{
+        axios.get('http://127.0.0.1:5000/organization/'+String(Entity1)+'/organization/'+String(Entity2))
+                .then(function(response){
+                  console.log(response);
+                  nodes = response.data.nodes;
+                  edges = response.data.relationships;
+                  for(var i=0;i<edges.length;i++)
+                  {
+                    edges[i].label=edges[i].type;
+                  }
+                  network.setData({nodes:nodes,edges:edges});
+                }).catch(function (error) {
+          console.log(error);
+        });
+      }
+    }
   }
 
   network.on("click", function(params) {
@@ -104,6 +218,7 @@
     console.log(params.edges);
     console.log(params.nodes[0]);
     document.getElementById("nodeid").innerText = params.nodes[0];
+    document.getElementById("comment").innerText = params.nodes[0];
     //axios
   });
 
@@ -116,3 +231,11 @@
 
 </body>
 </html>
+
+<!--/person/<pid>/organization/<oid>-->
+  <!--/person/<pid1>/person/<pid2>-->
+  <!--/organization/<oid1>/organization/<oid2>-->
+  <!--/person/<pid>-->
+  <!--/organization/<oid>-->
+  <!--/institution/<iname>-->
+  <!--/idustryGroup/<ilabel>-->
