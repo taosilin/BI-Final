@@ -17,19 +17,22 @@
     #info{
       display: flex;
     }
+    #Person{
+      padding: 10px;
+    }
   </style>
 </head>
 <body>
 
 <div id="search">
-
+  Search one entity:
   <select id="select">
     <option value="1">Person</option>
     <option value="2">Organization</option>
   </select>
   <input id="Entity" type="text" name="Entity" value=""><button type="button" onclick="search1(document.getElementById('Entity').value)">Search</button>
   <br/>
-
+  Search two entities:
   <select id="select1">
     <option value="1">Person</option>
     <option value="2">Organization</option>
@@ -41,6 +44,10 @@
   </select>
   <input id="Entity2" name="Entity2" value="">
   <button type="button" onclick="search2(document.getElementById('Entity1').value,document.getElementById('Entity2').value)">Search</button>
+  <br/>
+  Search Organization by Name:
+  <input id="Organization" type="text" name="Organization" value=""><button type="button" onclick="searchByName(document.getElementById('Organization').value)">Search</button>
+  <br/>
 </div>
 <div id="info">
   <div id="mynetwork"></div>
@@ -50,8 +57,16 @@
     <p>familyName:</p><p id="familyName"></p>
     <p>givenName:</p><p id="givenName"></p>
     <p>honorificPrefix:</p><p id="honorificPrefix"></p>
-
+    <br/>
+    <p>id:</p><p id="organizationid"></p>
+    <p>organizationName:</p><p id="organizationName"></p>
+    <p>headquartersAddress:</p><p id="headquartersAddress"></p>
+    <p>headquartersPhoneNumber:</p><p id="headquartersPhoneNumber"></p>
+    <p>registeredAddress:</p><p id="registeredAddress"></p>
   </div>
+</div>
+<div id="main">
+
 </div>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>　
 <script type="text/javascript">
@@ -407,15 +422,80 @@
     }
   }
 
+  function searchByName(Organization){
+    axios.get('http://127.0.0.1:5000/search/'+String(Organization))
+            .then(function (response) {
+              console.log(response);
+
+              // var cent = document.getElementById("main");
+              //
+              // console.log(cent);
+              // for(var i = 0; i < list.length; i++) {
+              //   cent.innerHTML += "<div id='' class='id-w'>" +
+              //           "<div id=''> " + list[i].name + "</div>" +
+              //           "<div id=''>" + list[i].time + "</div></div>";
+              // }
+            }).catch(function () {
+
+    });
+    // axios.get('http://127.0.0.1:5000/search/'+String(Organization))
+    //         .then(function(response){
+    //           console.log(response);
+    //           nodes = response.data.nodes;
+    //           edges = response.data.relationships;
+    //           for (var i=0;i<nodes.length;i++){
+    //             if (nodes[i].type==='Person'){
+    //               nodes[i].shape = "circle";
+    //               nodes[i].color = "rgb(255,218,185)";
+    //               nodes[i].margin = 10;
+    //             }else if (nodes[i].type==='Organization'){
+    //               nodes[i].shape = "circle";
+    //               nodes[i].color = "rgb(141,238,238)";
+    //               nodes[i].margin = 10;
+    //             }else if (nodes[i].type==='Officership'){
+    //               nodes[i].shape = "circle";
+    //               nodes[i].color = "rgb(84,255,159)";
+    //               nodes[i].margin = 10;
+    //             }else if (nodes[i].type==='BusinessSector'){
+    //               nodes[i].shape = "circle";
+    //               nodes[i].color = "rgb(255,246,143)";
+    //               nodes[i].margin = 10;
+    //             }else if (nodes[i].type==='EconomicSector'){
+    //               nodes[i].shape = "circle";
+    //               nodes[i].color = "rgb(238,130,238)";
+    //               nodes[i].margin = 10;
+    //             }else if (nodes[i].type==='IndustryGroup'){
+    //               nodes[i].shape = "circle";
+    //               nodes[i].color = "rgb(169,169,169)";
+    //               nodes[i].margin = 10;
+    //             }
+    //           }
+    //           for(i=0;i<edges.length;i++)
+    //           {
+    //             edges[i].label=edges[i].type;
+    //           }
+    //           network.setData({nodes:nodes,edges:edges});
+    //         }).catch(function (error) {
+    //   console.log(error);
+    // });
+  }
+
   network.on("click", function(params) {
     console.log(params);
     console.log(params.nodes[0]);
     document.getElementById("nodeid").innerText = params.nodes[0];
     for (var i=0;i<nodes.length;i++){
       if (nodes[i].id===params.nodes[0]){
-        document.getElementById("familyName").innerText = nodes[i].familyName;
-        document.getElementById("givenName").innerText = nodes[i].givenName;
-        document.getElementById("honorificPrefix").innerText = nodes[i].honorificPrefix;
+        if (nodes[i].type==='Person') {
+          document.getElementById("familyName").innerText = nodes[i].familyName;
+          document.getElementById("givenName").innerText = nodes[i].givenName;
+          document.getElementById("honorificPrefix").innerText = nodes[i].honorificPrefix;
+        }else if (nodes[i].type==='Organization') {
+          document.getElementById("organizationName").innerText = nodes[i].organizationName;
+          document.getElementById("headquartersAddress").innerText = nodes[i].headquartersAddress;
+          document.getElementById("headquartersPhoneNumber").innerText = nodes[i].headquartersPhoneNumber;
+          document.getElementById("registeredAddress").innerText = nodes[i].registeredAddress;
+        }
         break;
       }
     }
