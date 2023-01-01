@@ -9,8 +9,8 @@
     "vis": "^4.21.0"
   },
   "devDependencies": {
-    "webpack": "^4.8.3",
-    "webpack-cli": "^3.2.1"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
   },
   "author": "DevExpress",
   "license": "MIT"
